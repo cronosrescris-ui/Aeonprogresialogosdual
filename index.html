@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmic Grain MPNU – 4 Infinite + Logică Autonomă</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #0d1117; color: #c9d1d9; padding: 20px; }
+    .container { max-width: 900px; margin: auto; background-color: #161b22; padding: 25px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+    h1, h3 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 10px; margin-top: 20px; }
+    textarea { width: 97%; min-height: 150px; background-color: #0d1117; color: #c9d1d9; border: 1px solid #30363d; padding: 10px; margin-bottom: 15px; border-radius: 4px; }
+    button { background-color: #238636; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px; transition: background-color 0.3s; }
+    button:hover { background-color: #2ea043; }
+    .rezultat-container p { margin: 5px 0; padding-left: 10px; border-left: 3px solid #30363d; }
+    .infinit { color: #f0883e; font-weight: bold; }
+    .anomalie { color: #ff7b72; font-weight: bold; }
+    .corectie { color: #58a6ff; font-weight: bold; }
+    #stare-procesare { margin-top: 15px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Cosmic Grain MPNU – 4 Infinite + Logică Autonomă</h1>
+    <p>Creat de Cristian Popescu & Gemini, extins de Microsoft Copilot</p>
+
+    <h3>Input Universal</h3>
+    <textarea id="camp-input-universal" placeholder="Introdu textul tău aici..."></textarea>
+    <button id="buton-procesare">Procesează</button>
+    <button id="buton-export">Exportă (.txt)</button>
+    <div id="stare-procesare">Stare: Așteptare Input.</div>
+
+    <h3>Rezultat:</h3>
+    <div id="rezultat-final" class="rezultat-container"></div>
+  </div><script>
+    function updateUIStatus(message, isError = false) {
+      const statusElement = document.getElementById('stare-procesare');
+      statusElement.textContent = message;
+      statusElement.style.color = isError ? 'red' : 'green';
+    }
+
+    function genereazaInfinite(operator, mod) {
+      let rezultat = `[${operator}] ${mod}: `;
+      if (mod === "Separat Static") return rezultat + Array(10).fill(operator).join(', ') + ', ...';
+      if (mod === "Separat Evolutiv") return rezultat + Array.from({length: 10}, (_, i) => i + 1).join(', ') + ', ...';
+      if (mod === "La Unison Static") return rezultat + Array(10).fill(operator).join(', ') + ', ...';
+      if (mod === "La Unison Evolutiv") return rezultat + Array.from({length: 10}, (_, i) => operator + i).join(', ') + ', ...';
+      return rezultat;
+    }
+
+    function displayResults(input) {
+      const resultsElement = document.getElementById('rezultat-final');
+      const inputWords = input.split(/\s+/).filter(w => w.length > 0);
+      const numWords = inputWords.length;
+      const isAnomaly = (numWords % 5 !== 0) || (numWords === 0);
+      const corectieStatus = isAnomaly ? "Corecția Din Mers [33] Aplicată." : "Coerență Perfectă (Validare Finală)";
+      const baseValue = numWords > 0 ? numWords / 100 : 0.00;
+
+      let output = `<h3>Operatori 0–33 în 4 Infinite</h3>`;
+      for (let i = 0; i <= 33; i++) {
+        output += `<p class="infinit">${genereazaInfinite(i, "Separat Static")}</p>`;
+        output += `<p class="infinit">${genereazaInfinite(i, "Separat Evolutiv")}</p>`;
+        output += `<p class="infinit">${genereazaInfinite(i, "La Unison Static")}</p>`;
+        output += `<p class="infinit">${genereazaInfinite(i, "La Unison Evolutiv")}</p>`;
+      }
+
+      output += `<h3>Validare MPNU – Logică Autonomă</h3>`;
+      output += `<p><strong>[0] Radical:</strong> ${Math.sqrt(numWords).toFixed(3) || 'N/A'}</p>`;
+      output += `<p><strong>[1] Unitate:</strong> 1.000</p>`;
+      output += `<p><strong>[2] Multiplicare:</strong> ${(numWords * 2).toFixed(3) || 'N/A'}</p>`;
+      output += `<p><strong>[3] Oglindă:</strong> ${baseValue.toFixed(3) || 'N/A'}</p>`;
+      output += `<p><strong>[4] Referință:</strong> 0.000</p>`;
+      output += `<p><strong>[5] Control:</strong> VALID</p>`;
+      output += `<p><strong>[6] Măsură:</strong> Cuvinte: ${numWords}</p>`;
+      output += `<p><strong>[7] Ajustare:</strong> Stare: OK</p>`;
+      output += `<p><strong>[8] Coordonator:</strong> Activ</p>`;
+      output += `<p><strong>[9] Punct Fix:</strong> Activ</p>`;
+      output += `<p class="infinit"><strong>[10²∞] Simetric:</strong> sin/cos: Executat</p>`;
+      output += `<p class="infinit"><strong>[11²∞] Asimetric:</strong> log: Executat</p>`;
+      output += `<p><strong>[12] Sin-Genesis:</strong> Final de bază</p>`;
+      for (let i = 13; i <= 32; i++) {
+        output += `<p><strong>[${i}] Simplu.</strong></p>`;
+      }
+      output += `<h4 class="${isAnomaly ? 'anomalie' : 'corectie'}"><strong>[33] Oglindă-Supremă:</strong></h4>`;
+      output += `<p class="corectie-status-text"> - S! ${isAnomaly ? 'Anomalie Matematică Detectată.' : 'Coerență Perfectă.'}</p>`;
+      output += `<p class="corectie-final">Final: ${corectieStatus}</p>`;
+
+      resultsElement.innerHTML = output;
+    }
+
+    function exportResult() {
+      const rezultat = document.getElementById('rezultat-final');
+      if (!rezultat) return;
+      const text = rezultat.innerText;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'rezultat_mpnu_complet.txt';
+      link.click();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const butonProcesare = document.getElementById('buton-procesare');
+      const butonExport = document.getElementById('buton-export');
+      const campInput = document.getElementById('camp-input-universal');
+
+      butonProcesare.addEventListener('click', () => {
+        const input = campInput.value;
+        if (!input || input.length === 0) {
+          updateUIStatus("Eroare: Câmpul este gol.", true);
+          return;
+        }
+        updateUIStatus("Procesare completă.");
+        displayResults(input);
+      });
+
+      butonExport.addEventListener('click', () => {
+        exportResult();
+      });
+
+      // Activează automat rezultatul la încărcarea paginii
+      displayResults("MPNU");
+    });
+  </script>
+</body>
+</html>
